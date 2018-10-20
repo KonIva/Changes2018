@@ -63,6 +63,8 @@ public class Controller {
                                 items.add(item);
                             }
                             SaveListSingleton.getInstance().items = items;
+                            SaveListSingleton.getInstance().total = jsonArray.getJSONObject(jsonArray.length() - 1).getInt("total");
+
                             if (mListener != null) {
                                 mListener.onDataReady();
                             }

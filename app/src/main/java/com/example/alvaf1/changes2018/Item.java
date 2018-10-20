@@ -28,7 +28,7 @@ public class Item {
 
     private Integer selected;
 
-    private String total;
+    private int total;
 
     private String image;
 
@@ -124,11 +124,11 @@ public class Item {
         this.selected = selected;
     }
 
-    public String getTotal() {
+    public int getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(int total) {
         this.total = total;
     }
 }

@@ -32,12 +32,13 @@ public class AboutCandidates extends AppCompatActivity {
         String secondN=extras.getString("secondN");
         String thirdN=extras.getString("thirdN");
         String des=extras.getString("description");
+        String image=extras.getString("image");
         name.setText(firstN+" ");
         secondName.setText(secondN);
         thirdName.setText(thirdN);
         description.setText(des);
 
-        String url=AllUrl.Server+AllUrl.Host+AllUrl.Images+'/'+item.getImage();
+        String url=AllUrl.Server+AllUrl.Host+AllUrl.Images+image;
         downloadImage(url, candidat);
     }
     private void downloadImage(String url, final ImageView candidat) {
@@ -45,7 +46,9 @@ public class AboutCandidates extends AppCompatActivity {
         imageLoader.get(url, new ImageLoader.ImageListener() {
             @Override
             public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-
+                if(response.getBitmap()!=null){
+                    candidat.setImageBitmap(response.getBitmap());
+                }
             }
 
             @Override
@@ -62,19 +65,4 @@ public class AboutCandidates extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
-  /*  private class CheckImage extends AsyncTask<Object, Void, Boolean> {
-        public CheckImage(ImageView candidat, String image) {
-        }
-
-        @Override
-        protected Boolean doInBackground(Object[] objects) {
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-        }
-    }*/
 }

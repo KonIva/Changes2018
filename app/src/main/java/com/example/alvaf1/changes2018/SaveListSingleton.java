@@ -10,6 +10,17 @@ public class SaveListSingleton {
 
     private Item item;
 
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public int total;
+
+
     private static SaveListSingleton instance = new SaveListSingleton();
 
     private SaveListSingleton() {
