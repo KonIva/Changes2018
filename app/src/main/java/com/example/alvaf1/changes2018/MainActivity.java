@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity  implements DoRequestCallbac
     ListView listView;
     int selectedItemIndex = -1;
     boolean isParticipantChecked = false;
+    private static final String STATE_PARAM="param";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity  implements DoRequestCallbac
         itemsAdapter.registerOnItemSelectedEventListener(this);
         ArrayList<Item> item =  SaveListSingleton.getInstance().items;
         itemsAdapter.setItemsArray(SaveListSingleton.getInstance().items);
-
+        total=(TextView)findViewById(R.id.total);
         listView=(ListView)findViewById(R.id.listView);
         listView.setAdapter(itemsAdapter);
 
@@ -92,24 +93,16 @@ public class MainActivity extends AppCompatActivity  implements DoRequestCallbac
                 new Response.Listener<String>()  {
                     @Override
                     public void onResponse(String response) {
-
                         if (!isParticipantChecked) {
-
                             SaveListSingleton.getInstance().total++;
-
-
                         }
-
                         isParticipantChecked = true;
-
                         if (selectedItemIndex >= 0) {
                             View selectedView = getViewByPosition(selectedItemIndex, listView);
                             View oldView = getViewByPosition(index, listView);
                             CheckBox checkBox = selectedView.findViewById(R.id.checkBox);
                             checkBox.setChecked(false);
-
                         }
-
                         selectedItemIndex = index;
                         Log.d("Response", response);
                     }
@@ -140,8 +133,8 @@ public class MainActivity extends AppCompatActivity  implements DoRequestCallbac
             }
         };
         queue.add(postRequest);
-        total=(TextView)findViewById(R.id.total);
-        total.setText("Голосов: "+String.valueOf(SaveListSingleton.getInstance().total));
+
+        total.setText("Голосов: "+String.valueOf(SaveListSingleton.getInstance().getTotal()));
 
 
 

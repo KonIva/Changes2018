@@ -16,13 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             app:srcCompat="@drawable/titlemain" />
+
         <TextView
             android:id="@+id/total"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textAlignment="center"
-            />
+            android:text="Голосов: 68"
+            android:textAlignment="center" />
 
         <ListView
             android:id="@+id/listView"
