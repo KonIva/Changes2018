@@ -93,7 +93,7 @@ public class ItemsAdapter extends BaseAdapter {
 
             }
         });
-        String url=AllUrl.Server+AllUrl.Host+items.getImage();
+        String url=AllUrl.Server+AllUrl.Host+AllUrl.Images+items.getImage();
         ImageLoader imageLoader=VolleySingletone.getInstance(this.context).getImageLoader();
         imageLoader.get(url, new ImageLoader.ImageListener() {
             @Override

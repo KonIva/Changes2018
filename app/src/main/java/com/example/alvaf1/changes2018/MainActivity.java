@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity  implements DoRequestCallbac
 
         listView=(ListView)findViewById(R.id.listView);
         listView.setAdapter(itemsAdapter);
-        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -107,8 +107,7 @@ public class MainActivity extends AppCompatActivity  implements DoRequestCallbac
                             View oldView = getViewByPosition(index, listView);
                             CheckBox checkBox = selectedView.findViewById(R.id.checkBox);
                             checkBox.setChecked(false);
-                            //SaveListSingleton.getInstance().;
-                            //selectedView.votes++;
+
                         }
 
                         selectedItemIndex = index;
